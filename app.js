@@ -145,6 +145,12 @@ function initMap() {
 	}
 	map.fitBounds(bounds);
 }
+
+
+function mapFailed() {
+	document.getElementById('map').innerHTML = '<h1 class="panel-heading" >Google Map Could Not Be Loaded.</h1>';
+}
+
 // My NYT (New York Times) key to make a request to the NYT API.
 let nytKey = 'LdYTSYzgAcSlDzB81DLA7MAZpOPr5nMu'
 // This function populates the infowindow when the marker is clicked. We'll only allow
@@ -171,7 +177,7 @@ function populateInfoWindow(marker, location) {
 	    }).error(function() {
 	    	// if there is no data returned from the NYT API, then the marker's info
 	    	// window is still set, but it will obnly display the marker title.
-        	infowindow.setContent('<div>' + marker.title + '</div>');
+        	infowindow.setContent('<div>' + marker.title + '</br><p>Failed to load data from New York Times</p></div>');
 			infowindow.open(map, marker);
     	});
 	    
